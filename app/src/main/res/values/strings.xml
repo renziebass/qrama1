@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">qrama</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="button_teacher">Teacher</string>
+    <string name="button_student">student</string>
+    <string name="title_activity_teacher_main">teacher_main</string>
+    <string name="enter_teacher_id">Teacher ID</string>
+    <string name="enter_password">Password</string>
+    <string name="button_login">Login</string>
+    <string name="not_a_teacher">Not a Teacher?</string>
+    <string name="login_teacher_credentials">Login Teacher Credentials</string>
+    <string name="menu_class_session">Class Session</string>
+    <string name="menu_schedule">Schedules</string>
+    <string name="nav_teacher_id">Teacher ID:</string>
+    <string name="login_student_credentials">Login Student Credentials</string>
+    <string name="enter_student_id">Student ID</string>
+    <string name="not_a_student">Not a Student?</string>
+    <string name="temp_id">201600055</string>
+    <string name="temp_password">MHermina2018</string>
+</resources>
