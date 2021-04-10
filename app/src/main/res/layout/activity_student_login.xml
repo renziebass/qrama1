@@ -37,7 +37,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:text="@string/temp_id"
+            android:text="@string/temp_student_id"
             android:id="@+id/LoginTextID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -58,7 +58,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:text="@string/temp_password"
+            android:text="@string/temp_student_password"
             android:id="@+id/LoginTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

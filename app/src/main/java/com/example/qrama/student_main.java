@@ -1,6 +1,9 @@
 package com.example.qrama;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -16,22 +19,30 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.util.Calendar;
 
 
 public class student_main extends AppCompatActivity {
 
     Button AttendClassButton;
+    Button Blogout;
     TextView student_active_id;
-    TextView phpfullname;
-    TextView phpcourse;
+    TextView phpstudentfullname;
+    TextView tvCurrentDate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_main);
 
-        phpcourse = findViewById(R.id.student_active_course);
-        phpfullname = findViewById(R.id.student_active_fullname);
+        phpstudentfullname = findViewById(R.id.student_active_fullname);
+        tvCurrentDate = findViewById(R.id.tvCurrentDate);
+
+        Calendar calendar = Calendar.getInstance();
+        String currentDate = DateFormat.getDateInstance(DateFormat.SHORT).format(calendar.getTime());
+        tvCurrentDate.setText(currentDate);
 
         AttendClassButton = findViewById(R.id.AttendClassButton);
         AttendClassButton.setOnClickListener(new View.OnClickListener() {
@@ -41,19 +52,38 @@ public class student_main extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Blogout = findViewById(R.id.logoutTAcc);
+        Blogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         student_active_id = findViewById(R.id.student_active_id);
         SharedPreferences sharedPreferences = getSharedPreferences("myKey", MODE_PRIVATE);
         String ASid = sharedPreferences.getString("value", "");
         student_active_id.setText(ASid);
 
-        getSqlDetails();
+        getStudentInfo();
 
     }
-    private void getSqlDetails() {
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Log out")
+                .setMessage("Are you sure you want to log out?")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        student_main.super.onBackPressed();
+                    }
+                }).create().show();
+    }
+    private void getStudentInfo() {
         SharedPreferences sharedPreferences = getSharedPreferences("myKey", MODE_PRIVATE);
         String ASid = sharedPreferences.getString("value", "");
 
-        String url= "http://192.168.254.194/QRAMA/student_main.php?id="+ASid;
+        String url= "http://192.168.254.119/QRAMA/get_student_info.php?id="+ASid;
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 url,
                 new Response.Listener<String>() {
@@ -65,10 +95,10 @@ public class student_main extends AppCompatActivity {
                             for(int i=0; i < jsonarray.length(); i++) {
                                 JSONObject jsonobject = jsonarray.getJSONObject(i);
 
-                                String name = jsonobject.getString("first_name");
-                                String department = jsonobject.getString("department");
-                                phpfullname.setText(name);
-                                phpcourse.setText(department);
+                                String firstname = jsonobject.getString("first_name");
+                                String middlename = jsonobject.getString("middle_name");
+                                String lastname = jsonobject.getString("last_name");
+                                phpstudentfullname.setText(firstname+" "+middlename+" "+lastname);
 
                             }
                         } catch (JSONException e) {

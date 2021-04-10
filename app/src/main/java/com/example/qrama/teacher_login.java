@@ -39,7 +39,6 @@ public class teacher_login extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(teacher_login.this, MainActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
         BLoginTeacher = findViewById(R.id.LoginTeacher);
@@ -70,7 +69,7 @@ public class teacher_login extends AppCompatActivity {
                             String [] data = new String [2];
                             data[0] = id;
                             data [1] = password;
-                            PutData putData = new PutData("http://192.168.254.194/qrama/teacher_login.php", "POST", field, data);
+                            PutData putData = new PutData("http://192.168.254.119/qrama/teacher_login.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();
@@ -78,7 +77,6 @@ public class teacher_login extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(getApplicationContext(), teacher_main.class);
                                         startActivity(intent);
-                                        finish();
                                     } else {
                                         Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
                                     }

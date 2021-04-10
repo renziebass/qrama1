@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -15,18 +14,16 @@ import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
 import com.google.zxing.Result;
 
-public class student_camera extends AppCompatActivity {
+public class teacher_camera extends AppCompatActivity {
+
     private CodeScanner mCodeScanner;
-    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_camera);
+        setContentView(R.layout.activity_teacher_camera);
 
         CodeScannerView scannerView = findViewById(R.id.scanner_view);
-
-        final MediaPlayer mp = MediaPlayer.create(this, R.raw.jadev2);
 
         mCodeScanner = new CodeScanner(this, scannerView);
         mCodeScanner.setDecodeCallback(new DecodeCallback() {
@@ -36,18 +33,10 @@ public class student_camera extends AppCompatActivity {
                     @Override
                     public void run() {
 
-                        mp.start();
-
-                        Toast.makeText(student_camera.this, result.getText(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(teacher_camera.this, result.getText(), Toast.LENGTH_SHORT).show();
 
                         String QRScanned = result.getText();
-                        SharedPreferences sharedPref = getSharedPreferences("ScannedQR", MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPref.edit();
-                        editor.putString("value3", QRScanned);
-                        editor.apply();
 
-                        Intent intent = new Intent(student_camera.this, student_session.class);
-                        startActivity(intent);
                     }
                 });
             }
@@ -69,4 +58,5 @@ public class student_camera extends AppCompatActivity {
         mCodeScanner.releaseResources();
         super.onPause();
     }
+
 }

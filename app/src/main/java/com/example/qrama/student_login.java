@@ -70,7 +70,7 @@ public class student_login extends AppCompatActivity {
                             String [] data = new String [2];
                             data[0] = id;
                             data [1] = password;
-                            PutData putData = new PutData("http://192.168.254.194/qrama/student_login.php", "POST", field, data);
+                            PutData putData = new PutData("http://192.168.254.119/qrama/student_login.php", "POST", field, data);
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();

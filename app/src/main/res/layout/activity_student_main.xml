@@ -26,26 +26,26 @@
                     android:layout_height="wrap_content">
                     <TableRow>
                         <TextView
+                            android:id="@+id/tvCurrentDate"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="March 11,2021"
+                            android:layout_weight="4"
                             android:textSize="20sp"
                             android:fontFamily="@font/poppinsmedium"
-                            android:layout_weight="4"
                             android:layout_gravity="center_horizontal"
                             android:gravity="center">
                         </TextView>
                     </TableRow>
                     <TableRow>
-                        <TextView
+                        <TextClock
+                            android:id="@+id/textClock1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="11:24 AM"
-                            android:fontFamily="@font/poppinsmedium"
                             android:layout_weight="4"
+                            android:format12Hour="hh:mm"
                             android:layout_gravity="center_horizontal"
                             android:gravity="center">
-                        </TextView>
+                        </TextClock>
                     </TableRow>
                 </TableLayout>
 
@@ -106,132 +106,41 @@
                             android:layout_height="wrap_content">
                         </TextView>
                     </TableRow>
-                    <TableRow
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Course">
-                        </TextView>
-                        <TextView
-                            android:id="@+id/student_active_course"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                        </TextView>
-                    </TableRow>
-                    <TableRow
-                        android:padding="8dp">
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:text="Class information"
-                            android:layout_weight="4"
-                            android:layout_gravity="center_horizontal"
-                            android:gravity="center">
-                        </TextView>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Subject ID">
-                        </TextView>
-                        <TextView
-                            android:id="@+id/class_active_id"
-                            android:layout_marginLeft="10dp"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                        </TextView>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Description">
-                        </TextView>
-                        <TextView
-                            android:id="@+id/class_active_des"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                        </TextView>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Time">
-                        </TextView>
-                        <TextView
-                            android:id="@+id/class_active_timesched"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                        </TextView>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Day">
-                        </TextView>
-                        <TextView
-                            android:id="@+id/class_active_daysched"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                        </TextView>
-                    </TableRow>
                 </TableLayout>
-
             </FrameLayout>
         </TableRow>
-        <TableRow
-            android:layout_marginTop="30dp">
-            <FrameLayout
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:layout_weight="4"
-                android:layout_gravity="center"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp">
-                <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TableRow>
-                        <Button
-                            android:id="@+id/AttendClassButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Attend a class"
-                            android:layout_weight="4"
-                            android:layout_gravity="center_horizontal"
-                            android:gravity="center">
-                        </Button>
-                    </TableRow>
-                    <TableRow>
-                        <Button
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="Timeout / Dismissed"
-                            android:layout_weight="4"
-                            android:layout_gravity="center_horizontal"
-                            android:gravity="center">
-                        </Button>
-                    </TableRow>
-                </TableLayout>
-
-            </FrameLayout>
-        </TableRow>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1">
+            <TableRow
+                android:layout_marginTop="30dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/AttendClassButton"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:text="Attend a class">
+                </Button>
+                <Button
+                    android:id="@+id/logoutTAcc"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:text="Logout">
+                </Button>
+            </TableRow>
+        </TableLayout>
     </TableLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
